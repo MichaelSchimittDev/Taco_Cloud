@@ -20,8 +20,7 @@ public class IngredientByIdConverter implements Converter<String, Ingredient>{
     @Override
     public Ingredient convert(String id) {
         Optional<Ingredient> optionalIngredient = ingredientRepository.findById(id);
-        return optionalIngredient.isPresent() ?
-                optionalIngredient.get() : null;
+        return optionalIngredient.isPresent() ? optionalIngredient.get() : null;
     }
 
 }
