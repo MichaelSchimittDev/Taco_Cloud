@@ -32,7 +32,6 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("order")
-@Slf4j
 public class DesignTacoController {
 
     private final IngredientRepository ingredientRepository;
@@ -60,7 +59,6 @@ public class DesignTacoController {
 
     @GetMapping
     public String showDesignForm(Model model, Principal principal){
-        log.info("   --- Designing taco");
 
         List<Ingredient> ingredients = new ArrayList<>();
         ingredientRepository.findAll().forEach(ingredients::add);
@@ -80,7 +78,6 @@ public class DesignTacoController {
 
     @PostMapping
     public String processDesign(@Valid Taco taco, Errors errors, @ModelAttribute Order order){
-        log.info("   --- Saving taco");
 
         if(errors.hasErrors()){
             return "design";
